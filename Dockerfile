@@ -19,7 +19,8 @@ MAINTAINER Alicia Mastretta-Yanes <amastretta@conabio.gob.mx>
 ################## INSTALLATION ######################
 USER root
 
-ENV DST=/tmp
+# install in /opt instead of /tmp
+ENV DST=/opt
 ENV URL=https://github.com/agordon/libgtextutils/releases/download/0.7/
 
 RUN wget $URL/libgtextutils-0.7.tar.gz -O $DST/libgtextutils-0.7.tar.gz && \
@@ -56,7 +57,7 @@ RUN wget $URL/$ZIP -O $DST/$ZIP && \
     rm $DST/$ZIP && \
     cd $DST/FastQC && \
     chmod 755 fastqc && \
-    cp $DST/FastQC/* /usr/local/bin/
+    ln -s $DST/FastQC/fastqc /usr/local/bin/fastqc
 
 ENV PATH /usr/local/bin:$PATH
 
