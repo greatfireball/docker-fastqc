@@ -14,6 +14,7 @@ LABEL about.tags="General"
 USER root
 ENV DST=/opt
 ENV ZIP=fastqc_v0.11.5.zip
+ENV LANG=C
 
 RUN \
     # set locales
